@@ -1,0 +1,34 @@
+
+import java.util.ArrayList;
+import java.util.List;
+public class Solution {
+
+    String[] arr = {"", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    List<String> li = new ArrayList<>();
+
+    public List<String> listCombination(String d) {
+        if (d.length() == 0) {
+            return li;
+        }
+        solve(d, "");
+        return li;
+    }
+
+    private void solve(String s, String ans) {
+        if (s.length() == 0) {
+            li.add(ans);
+            return;
+        }
+
+        int n = s.charAt(0) - '0';
+        for (int j = 0; j < arr[n].length(); j++) {
+            solve(s.substring(1), ans + arr[n].charAt(j));
+        }
+    }
+
+    public static void main(String[] args) {
+    	Phone_Number so = new Phone_Number();
+        List<String> re = so.listCombination("23");
+        System.out.println(re);
+    }
+}
