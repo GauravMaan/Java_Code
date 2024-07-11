@@ -1,0 +1,41 @@
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> list = new ArrayList();
+        sol(n, 0, 0, "", list);
+        return list;
+    }
+
+    public static void sol(int n, int ob, int cb, String ans, List<String> list) {
+        if (ob > n)
+            return;
+        if (ob + cb == 2 * n) {
+            list.add(ans);
+            return;
+        }
+        if (cb > ob)
+            return;
+        sol(n, ob + 1, cb, ans + "(", list);
+        sol(n, ob, cb + 1, ans + ")", list);
+    }
+}
+
+// second
+class Solution {
+    public static void sol(int n, int ob, int cb, String ans, List<String> list) {
+        if (ob + cb == 2 * n) {
+            list.add(ans);
+            return;
+        }
+        if(ob<n){
+        sol(n, ob + 1, cb, ans + "(", list);
+       }
+        if(cb<ob){
+        sol(n, ob, cb + 1, ans + ")", list);
+       }
+    }
+     public List<String> generateParenthesis(int n) {
+        List<String> list = new ArrayList<>();
+        sol(n, 0, 0, "", list);
+        return list;
+    }
+}
